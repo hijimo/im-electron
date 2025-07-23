@@ -87,7 +87,7 @@ const ContactSider = () => {
               <li
                 key={item.path}
                 className={clsx(
-                  "mx-2 flex cursor-pointer items-center rounded-md p-3 text-sm hover:bg-[var(--primary-active)]",
+                  "mx-2 my-1 flex cursor-pointer items-center rounded-md p-2 text-sm hover:bg-[var(--primary-active)]",
                   {
                     "bg-[#f3f8fe]": index === selectIndex,
                   },

@@ -112,7 +112,11 @@ const NavItem = ({ nav: { icon, title, path } }: { nav: NavItemType }) => {
         )}
         onClick={tryNavigate}
       >
-        <LucideIcon icon={icon} size={24} color={isActive ? "var(--color-primary)" : undefined} />
+        <LucideIcon
+          icon={icon}
+          size={24}
+          color={isActive ? "var(--color-primary)" : undefined}
+        />
         <div className="mt-1 text-xs text-gray-500">{title}</div>
       </div>
     </Badge>
@@ -130,11 +134,11 @@ const profileMenuList = [
     gap: true,
     idx: 1,
   },
-  {
-    title: t("placeholder.about"),
-    gap: false,
-    idx: 2,
-  },
+  // {
+  //   title: t("placeholder.about"),
+  //   gap: false,
+  //   idx: 2,
+  // },
   {
     title: t("placeholder.logOut"),
     gap: false,
@@ -238,26 +242,24 @@ const LeftNavBar = memo(() => {
         itemLayout="horizontal"
         dataSource={profileMenuList}
         renderItem={(menu, idx) => (
-            <List.Item
-              key={idx}
-              onClick={() => profileMenuClick(menu.idx)}
-              className={
-                "flex cursor-pointer items-center justify-between rounded-md hover:bg-[var(--primary-active)]" 
-                
-              }
-            >
-              {
-                menu.idx === 3 ? (
-                  <Button size="small" type="text" className="w-full py-0" danger>{menu.title}</Button>
-                ) : (
-                  <>
-                    <div className="pl-3">{menu.title}</div>
-                    <LucideIcon icon="chevron-right" className="text-gray-300" size={22} />
-                  </>
-                )
-              }
-              
-            </List.Item>
+          <List.Item
+            key={idx}
+            onClick={() => profileMenuClick(menu.idx)}
+            className={
+              "flex cursor-pointer items-center justify-between rounded-md hover:bg-[var(--primary-active)]"
+            }
+          >
+            {menu.idx === 3 ? (
+              <Button size="small" type="text" className="w-full py-0" danger>
+                {menu.title}
+              </Button>
+            ) : (
+              <>
+                <div className="pl-3">{menu.title}</div>
+                <LucideIcon icon="chevron-right" className="text-gray-300" size={22} />
+              </>
+            )}
+          </List.Item>
         )}
       />
     </div>
