@@ -10,6 +10,8 @@ import { emit } from "@/utils/events";
 
 import AlphabetIndex from "./AlphabetIndex";
 import FriendListItem from "./FriendListItem";
+import styles from "./index.module.scss";
+import classNames from "classnames";
 
 export const MyFriends = () => {
   const { t } = useTranslation();
@@ -106,7 +108,10 @@ export const MyFriends = () => {
               );
             }}
             rangeChanged={({ startIndex }) => determineCurrentGroup(startIndex)}
-            className="no-scrollbar h-full overflow-x-hidden"
+            className={classNames(
+              styles.myFriendsList,
+              "no-scrollbar h-full overflow-x-hidden",
+            )}
           />
         </div>
       )}

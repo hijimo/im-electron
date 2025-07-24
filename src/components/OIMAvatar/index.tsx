@@ -1,8 +1,8 @@
-import { Avatar as AntdAvatar, AvatarProps } from "antd";
-import clsx from "clsx";
 import * as React from "react";
 import { useMemo } from "react";
-
+import { Avatar as AntdAvatar, AvatarProps } from "antd";
+import clsx from "clsx";
+import LucideIcon from "@/components/LucideIcon";
 import default_group from "@/assets/images/contact/group.png";
 import { avatarList, getDefaultAvatar } from "@/utils/avatar";
 
@@ -36,7 +36,8 @@ const OIMAvatar: React.FC<IOIMAvatarProps> = (props) => {
 
       return src;
     }
-    return isgroup ? default_group : undefined;
+    // 群组默认头像不再返回图片
+    return undefined;
   }, [src, isgroup, isnotification]);
 
   const avatarProps = { ...props, isgroup: undefined, isnotification: undefined };
@@ -49,7 +50,7 @@ const OIMAvatar: React.FC<IOIMAvatarProps> = (props) => {
 
   const errorHandler = () => {
     if (isgroup) {
-      setErrorHolder(default_group);
+      setErrorHolder(undefined); // 不再设置为图片
     }
   };
 
@@ -73,7 +74,22 @@ const OIMAvatar: React.FC<IOIMAvatarProps> = (props) => {
       src={errorHolder ?? getAvatarUrl}
       onError={errorHandler as any}
     >
-      {text}
+      {/* 如果是群组且没有头像，则显示LucideIcon */}
+      {!src && isgroup ? (
+        <div
+          style={{
+            width: size,
+            height: size,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <LucideIcon icon="users" size={size * 0.7} color={color} />
+        </div>
+      ) : (
+        text
+      )}
     </AntdAvatar>
   );
 };

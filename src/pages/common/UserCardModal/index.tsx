@@ -224,14 +224,14 @@ const UserCardModal: ForwardRefRenderFunction<
       }}
       afterClose={resetState}
       ignoreClasses=".ignore-drag, .no-padding-modal, .cursor-pointer"
-      className="no-padding-modal"
+      className="no-padding-modal shadow-lg"
       maskTransitionName=""
     >
       <Spin spinning={isLoading}>
         {isSendRequest ? (
           <SendRequest cardInfo={cardInfo!} backToCard={backToCard} />
         ) : (
-          <div className="flex max-h-[520px] min-h-[484px] flex-col overflow-hidden bg-[url(@/assets/images/common/card_bg.png)] bg-[length:332px_134px] bg-no-repeat px-5.5">
+          <div className="flex	max-h-[520px] min-h-[484px] flex-col overflow-hidden bg-[url(@/assets/images/common/card_bg.png)] bg-[length:332px_134px] bg-no-repeat px-5.5">
             <div className="h-[104px] min-h-[104px] w-full cursor-move" />
             <div className="ignore-drag flex flex-1 flex-col overflow-hidden">
               <div className="flex items-center">
@@ -286,7 +286,7 @@ const UserCardModal: ForwardRefRenderFunction<
                   {t("placeholder.editInfo")}
                 </Button>
               )}
-              {!isSelf && (
+              {/* {!isSelf && (
                 <Button
                   type="primary"
                   className="flex-1"
@@ -299,7 +299,7 @@ const UserCardModal: ForwardRefRenderFunction<
                 >
                   {t("placeholder.sendMessage")}
                 </Button>
-              )}
+              )} */}
             </div>
           </div>
         )}

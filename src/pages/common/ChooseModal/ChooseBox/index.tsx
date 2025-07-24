@@ -2,6 +2,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { SessionType } from "@openim/wasm-client-sdk";
 import { GroupMemberItem } from "@openim/wasm-client-sdk/lib/types/entity";
 import { useDebounceFn, useLatest } from "ahooks";
+import classNames from "classnames";
 import { Breadcrumb, Input, Spin } from "antd";
 import { BreadcrumbItemType } from "antd/es/breadcrumb/Breadcrumb";
 import clsx from "clsx";
@@ -32,6 +33,8 @@ import { feedbackToast } from "@/utils/common";
 
 import CheckItem, { CheckListItem } from "./CheckItem";
 import MenuItem from "./MenuItem";
+
+import styles from "./index.module.scss";
 
 const menuList = [
   {
@@ -257,7 +260,7 @@ const CommonLeft: FC<ICommonLeftProps> = ({
       />
       <div className="mb-3 flex-1 overflow-y-auto">
         <Virtuoso
-          className="h-full"
+          className={classNames(styles.myFriendsList, "h-full")}
           data={checkList}
           itemContent={(_, item) => (
             <CheckItem

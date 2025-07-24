@@ -131,7 +131,11 @@ const SearchUserOrGroup: ForwardRefRenderFunction<
           <Input.Search
             ref={inputRef}
             className="no-addon-search"
-            placeholder={t("placeholder.pleaseEnterAddGroup")}
+            placeholder={
+              isSearchGroup
+                ? t("placeholder.pleaseEnterAddGroup")
+                : t("placeholder.pleaseEnterAddUser")
+            }
             value={keyword}
             addonAfter={null}
             spellCheck={false}
