@@ -1,0 +1,12 @@
+.groupNotifications :global(div[data-test-id="virtuoso-item-list"]) > * + * {
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: #e5e7eb;
+    width: calc(100% - 64px);
+    height: 1px;
+    top: 0;
+    left: 32px;
+  }
+  position: relative;
+}

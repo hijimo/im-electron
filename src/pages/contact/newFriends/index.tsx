@@ -3,6 +3,7 @@ import { FriendApplicationItem } from "@openim/wasm-client-sdk/lib/types/entity"
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Virtuoso } from "react-virtuoso";
+import classNames from "classnames";
 
 import ApplicationItem, { AccessFunction } from "@/components/ApplicationItem";
 import { IMSDK } from "@/layout/MainContentWrap";
@@ -10,6 +11,7 @@ import { useUserStore } from "@/store";
 import { useContactStore } from "@/store/contact";
 import { feedbackToast } from "@/utils/common";
 import { calcApplicationBadge } from "@/utils/imCommon";
+import styles from "./index.module.scss";
 
 export const NewFriends = () => {
   const { t } = useTranslation();
@@ -83,8 +85,7 @@ export const NewFriends = () => {
       <p className="m-5.5 text-base font-extrabold">{t("placeholder.newFriends")}</p>
       <div className="flex-1 pb-3">
         <Virtuoso
-          className="h-full overflow-x-hidden "
-          
+          className={classNames(styles.newsFriendsList, "h-full overflow-x-hidden")}
           data={friendApplicationList}
           itemContent={(_, item) => (
             <ApplicationItem

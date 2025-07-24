@@ -1,14 +1,16 @@
+import ApplicationItem, { AccessFunction } from "@/components/ApplicationItem";
 import { ApplicationHandleResult } from "@openim/wasm-client-sdk";
 import { GroupApplicationItem } from "@openim/wasm-client-sdk/lib/types/entity";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Virtuoso } from "react-virtuoso";
 
-import ApplicationItem, { AccessFunction } from "@/components/ApplicationItem";
 import { IMSDK } from "@/layout/MainContentWrap";
 import { useUserStore } from "@/store";
 import { useContactStore } from "@/store/contact";
 import { feedbackToast } from "@/utils/common";
+import classNames from "classnames";
+import styles from "./index.module.scss";
 
 export const GroupNotifications = () => {
   const { t } = useTranslation();
@@ -86,7 +88,7 @@ export const GroupNotifications = () => {
       </p>
       <div className="flex-1 pb-3">
         <Virtuoso
-          className="h-full overflow-x-hidden"
+          className={classNames(styles.groupNotifications, "h-full overflow-x-hidden")}
           data={groupApplicationList}
           itemContent={(_, item) => (
             <ApplicationItem
